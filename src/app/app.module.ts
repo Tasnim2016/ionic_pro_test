@@ -1,3 +1,4 @@
+import { ErrorHandler } from '@angular/core';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
@@ -8,6 +9,8 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AppErrorHandlerProvider } from './common/app-error-handler';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -16,7 +19,8 @@ import { AppComponent } from './app.component';
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    { provide: ErrorHandler, useClass: AppErrorHandlerProvider },
   ],
   bootstrap: [AppComponent]
 })
